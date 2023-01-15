@@ -85,7 +85,7 @@ function displayScoreOne() {
 function displayScoreTwo() {
   context.font = "18px Arial";
   context.fillStyle = "#fff";
-  context.fillText(scoreOne, canvas.width / 2 + 60, 30);
+  context.fillText(scoreTwo, canvas.width / 2 + 60, 30);
 }
 // Player two score text
 
@@ -108,25 +108,25 @@ function ballWallCollision() {
     (ball.y + ball.gravity <= playerTwo.y + playerTwo.height &&
       ball.x + ball.width + ball.speed >= playerTwo.x &&
       ball.y + ball.gravity > playerTwo.y) ||
-    (ball.y + ball.gravity <= playerOne.y + playerOne.height &&
-      ball.x + ball.width + ball.speed >= playerOne.x &&
-      ball.y + ball.gravity > playerOne.y)
+    (ball.y + ball.gravity > playerOne.y &&
+      ball.x + ball.speed <= playerOne.x + playerOne.width)
   ) {
     ball.speed = ball.speed * -1;
   } else if (ball.x + ball.speed < playerOne.x) {
     scoreTwo += 1;
     ball.speed = ball.speed * -1;
-    ball.x = 100 + ball.speed;
+    ball.x = canvas.width / 2;
     ball.y += ball.gravity;
   } else if (ball.x + ball.speed > playerTwo.x + playerTwo.width) {
     scoreOne += 1;
     ball.speed = ball.speed * -1;
-    ball.x = 100 + ball.speed;
+    ball.x = canvas.width / 2;
     ball.y += ball.gravity;
   }
+
   drawElements();
 }
-// Draw elemen ts
+// Draw elements
 function drawElements() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   drawElement(playerOne);
