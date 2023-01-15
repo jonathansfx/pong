@@ -1,44 +1,10 @@
-<style>
-  body {
-    background: black;
-    margin: 0;
-  }
-</style>
-
-<canvas></canvas>
-
-<script>
-  const canvas = document.querySelector("canvas");
-  const c = canvas.getContext("2d");
-
-  canvas.width = innerWidth;
-  canvas.width = innerHeight;
-
-  class Paddle {
-    constuctor({ position }) {
-      {
-        this.position = position;
-        this.velocity = {
-          x: 0,
-          y: 0,
-        };
-      }
-      this.width = 10;
-      this.height = 100;
-    }
-
-    draw() {
-      c.fillStyle("white");
-      c.fillRect(this.position.x, this.position.y, this.width, this.height);
-    }
-  }
-
-  const paddle1 = new paddle({
-    position: {
-      x: 10,
-      y: 100,
-    },
-  });
-
-  paddle1.draw();
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pong</title>
+  </head>
+  <body>
+    <canvas id="pong" style="background-color: black"></canvas>
+    <script src="main.js"></script>
+  </body>
+</html>
